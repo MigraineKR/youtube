@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#menu-container {
+    width: 250px;
+}
+
+.menu-icon {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+}
+
+#video-list {
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.video-entry {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.video-entry img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
