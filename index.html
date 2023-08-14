@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Menu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="menu-container">
+        <svg id="video-list-button" xmlns="http://www.w3.org/2000/svg" class="menu-icon">
+            <path d="M4 10h24c1.104 0 2-.896 2-2s-.896-2-2-2H4c-1.104 0-2 .896-2 2s.896 2 2 2zm24 4H4c-1.104 0-2 .896-2 2s.896 2 2 2h24c1.104 0 2-.896 2-2s-.896-2-2-2zm0 8H4c-1.104 0-2 .896-2 2s.896 2 2 2h24c1.104 0 2-.896 2-2s-.896-2-2-2z"></path>
+        </svg>
+        <div id="video-list" class="hidden">
+            <!-- Sample video entries -->
+            <div class="video-entry">
+                <img src="URL_OF_THUMBNAIL_1" alt="Video 1 Thumbnail">
+                <span>Video 1 Title</span>
+            </div>
+            <div class="video-entry">
+                <img src="URL_OF_THUMBNAIL_2" alt="Video 2 Thumbnail">
+                <span>Video 2 Title</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
