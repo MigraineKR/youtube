@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://s.ytimg.com/yts/jsbin/www-widgetapi-vfl1aVfNF/www-widgetapi.js" async></script>
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+
+        #menu-button {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #video-list {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 150px;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            overflow-y: auto;
+            display: none;
+        }
+
+        #video-list .video {
+            cursor: pointer;
+        }
+
+        #video-list img {
+            width: 100%;
+        }
+
+        #close-button {
+            display: block;
+            text-align: right;
+            cursor: pointer;
+        }
+
+        /* Add other styles here */
+
+    </style>
+</head>
+
+<body>
+    <span id="menu-button">Menu</span>
+    <div id="video-list" class="list">
+        <span id="close-button">x</span>
+        <span class="credit">by <a href="https://migraine.kr">편두통케어</a></span>
+        <!-- Add your video list here -->
+    </div>
+    
+    <div id="player"></div>
+
+    <script>
+        var tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/player_api';
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        var p;
+
+        var videoIds = ['qwZypa0iKq8', 'KpHP8VmxnBo'];  // Add more video IDs here
+
+        function onYouTubePlayerAPIReady() {
+            p = new YT.Player('player', {
+                height: '100%',
+                width: '100%',
+                playerVars: {
+                    rel: 0,
+                    autoplay: 1,
+                    loop: 1,
+                    controls: 1,
+                    autohide: 1,
+                    showinfo: 0,
+                    wmode: 'opaque'
+                },
+                events: {
+                    onReady: onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(a) {
+            a.target.playVideo(), a.target.mute()
+        }
+
+        function toggleSound() {
+            p.isMuted() ? p.unMute() : p.mute()
+        }
+
+        // Toggle video list
+        document.getElementById("menu-button").addEventListener("click", function(){
+            var list = document.getElementById("video-list");
+            list.style.display = list.style.display === "none" ? "block" : "none";
+        });
+
+        document.getElementById("close-button").addEventListener("click", function(){
+            document.getElementById("video-list").style.display = "none";
+        });
+
+        var videos = document.querySelectorAll(".video");
+        videos.forEach(function(video) {
+            video.addEventListener("click", function(){
+                var index = parseInt(video.getAttribute("data-number")) - 1;
+                p.loadVideoById(videoIds[index]);
+            });
+        });
+
+    </script>
+</body>
+
+</html>
